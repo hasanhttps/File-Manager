@@ -1,0 +1,88 @@
+// Required Elements
+
+// What is sub folder ?
+
+Nested Folders
+
+// Delete Selected file folder .
+
+#include <stdio.h>
+#include <string.h>
+
+int main () {
+   int ret;
+   FILE *fp;
+   char filename[] = "file.txt";
+
+   fp = fopen(filename, "w");
+
+   fprintf(fp, "%s", "This is tutorialspoint.com");
+   fclose(fp);
+   
+   ret = remove(filename);
+
+   if(ret == 0) {
+      printf("File deleted successfully");
+   } else {
+      printf("Error: unable to delete the file");
+   }
+   
+}
+
+// Rename selected file or folder
+
+
+#include <stdio.h>
+
+int main () {
+   int ret;
+   char oldname[] = "file.txt";
+   char newname[] = "newfile.txt";
+   
+   ret = rename(oldname, newname);
+	
+   if(ret == 0) {
+      printf("File renamed successfully");
+   } else {
+      printf("Error: unable to rename the file");
+   }
+   
+   return(0);
+}   
+
+// Create Folder
+
+
+#include <iostream>
+#include <direct.h>
+using namespace std;
+ 
+int main()
+ 
+{
+ 
+    // Creating a directory
+    if (_mkdir("location//geeksforgeeks") == -1)
+        cerr << "Error :  " << strerror(errno) << endl;
+ 
+    else
+        cout << "Directory created";
+}
+
+// Remove selected file
+
+#include <iostream>
+#include <direct.h>
+using namespace std;
+ 
+int main()
+ 
+{
+ 
+    // Creating a directory
+    if (_rmdir("location//geeksforgeeks") == -1)
+        cerr << "Error :  " << strerror(errno) << endl;
+ 
+    else
+        cout << "Directory deleted";
+}
