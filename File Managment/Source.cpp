@@ -1,4 +1,5 @@
 #include <ios>
+#include <io.h>
 #include <iostream>
 #include <fstream>
 #include <sys/stat.h>
@@ -32,8 +33,12 @@ int main() {
 	int set[2] = { col, defC };
 	while (true) {
 		getCurrentSizeT();// Get Current Size of Terminal wit row and column
+		gotoXy(0, 0);
 		if (change) {
 			system("cls");
+			color(127);
+			if (change) cout << rows << " : " << columns;
+			color(defC);
 			menu(set, columns / 2 - 8, rows / 2 - 1);
 			gotoXy(columns / 2 - 8, rows / 2 - 1 + choose);
 		}if (_kbhit()) {

@@ -87,9 +87,9 @@ public:
 
 	void createFolder(string path) {
 		try {
+			if (_mkdir(path.c_str()) == -1) throw exception("Folder couldn't be created!\n");
 			locations.push_back(path);
 			path = currentLocation + "\\" + path;
-			if (_mkdir(path.c_str()) == -1) throw exception("Folder couldn't be created!\n");
 		}
 		catch (exception& ex) {
 			cout << ex.what() << endl;
@@ -150,6 +150,29 @@ public:
 			cout << ex.what() << endl;
 		}
 	}
+
+	void show_folder() {
+		_finddata_t file_info;
+		intptr_t handle = _findfirst((currentLocation + "/*").c_str(), &file_info);
+		
+		if (handle == -1) {
+			cerr << "Could not open folder: " << currentLocation << endl;
+			return;
+		}
+		do {
+			if (strcmp(file_info.name, ".") == 0 || strcmp(file_info.name, "..") == 0) continue;
+		
+			cout << "Name: " << file_info.name << endl;
+			cout << "Attribute: " << file_info.attrib << endl;
+			cout << "Size: "<< file_info.size << endl;
+		
+			if (file_info.attrib & _A_SUBDIR) cout << "Type : Subfolder";
+			else cout << "Type: File";
+			cout << "\n-------------------------------------------\n";
+		} while (_findnext(handle, &file_info) == 0);	
+		_findclose(handle);
+	}
+		
 
 	// Destructor
 
