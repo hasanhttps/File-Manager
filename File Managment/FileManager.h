@@ -26,16 +26,20 @@ public:
 	// Functions
 
 	void writeLocations() {
-		ifstream infile(filepath, ios::in);
+		try {
+			ifstream infile(filepath, ios::in);
 
-		if (!infile) throw exception("File couldnt be found\n");
-		if (!infile.is_open()) throw exception("File couldnt be opened\n");
+			if (!infile) throw exception("File couldnt be found\n");
+			if (!infile.is_open()) throw exception("File couldnt be opened\n");
 
-		string location;
-		while (!infile.eof()) {
-			infile >> location;
-			if (location != "") locations.push_back(location);
-		}infile.close();
+			string location;
+			while (!infile.eof()) {
+				infile >> location;
+				if (location != "") locations.push_back(location);
+			}infile.close();
+		}catch (exception& ex) {
+			cout << ex.what() << endl;
+		}
 	}
 
 	void createFile(string fileName) {
@@ -87,9 +91,9 @@ public:
 
 	void createFolder(string path) {
 		try {
+			path = currentLocation + "\\" + path;
 			if (_mkdir(path.c_str()) == -1) throw exception("Folder couldn't be created!\n");
 			locations.push_back(path);
-			path = currentLocation + "\\" + path;
 		}
 		catch (exception& ex) {
 			cout << ex.what() << endl;

@@ -7,8 +7,7 @@
 #include <conio.h>
 #include <Windows.h>
 #include <direct.h>
-#include <ctime>  
-#include <thread> 
+#include <ctime>
 #include <vector>
 #include <algorithm>
 

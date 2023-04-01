@@ -220,7 +220,7 @@ void interFace(FileManager& file) {
 			else if (choose == 14) break;
 			system("cls");
 		}
-	}
+	}system("color 7");
 }
 
 void delay(float seconds) {
