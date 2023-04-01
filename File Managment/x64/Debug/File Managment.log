@@ -1,6 +1,6 @@
 ﻿  Source.cpp
-C:\Users\hasan\source\repos\File-Manager\File Managment\Functions.h(65,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\hasan\source\repos\File-Manager\File Managment\Functions.h(81,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\hasan\source\repos\File-Manager\File Managment\Functions.h(136,91): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\hasan\source\repos\File-Manager\File Managment\Functions.h(144,36): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\hasan\source\repos\File-Manager\File Managment\Functions.h(69,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\hasan\source\repos\File-Manager\File Managment\Functions.h(85,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\hasan\source\repos\File-Manager\File Managment\Functions.h(140,91): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\hasan\source\repos\File-Manager\File Managment\Functions.h(148,36): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   File Managment.vcxproj -> C:\Users\hasan\source\repos\File-Manager\x64\Debug\File Managment.exe

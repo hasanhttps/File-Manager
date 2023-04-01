@@ -18,6 +18,9 @@ void menu(int* set, int x, int y) {
 	gotoXy(x, y + 1);
 	color(set[1]);
 	cout << "Inteface";
+	gotoXy(x, y + 2);
+	color(set[2]);
+	cout << "Help";
 	color(defC);
 }
 
@@ -59,6 +62,7 @@ void cmd(FileManager& file) {
 				file.setLocation(location);
 			}
 			else if (command == "show") file.printAllLocation();
+			else if (command == "dir") file.show_folder();
 			else if (command == "move") {
 				if (data == "") throw exception("The syntax of the command is incorrect.\n");
 				data = data.substr(1, data.size());
@@ -221,6 +225,38 @@ void interFace(FileManager& file) {
 			system("cls");
 		}
 	}system("color 7");
+}
+
+void help() {
+	getCurrentSizeT();
+	char* help = new char[] {
+		R"(
+							File Manager is originally a program to control files or folders, change system files or folders etc.
+							File Manager consists of two main page : command page and inteface page. Recomandation is using command
+							because of controlling all folder with easy commands. The commands is overloaded is these :
+
+							1. mkdir foldername  ->  create Folder with specified name
+							2. rmdir foldername  ->  delete Folder if exist
+							3. rename file|foldername  ->  change file|folder name
+							4. move old(file|foldername) new(file|foldername)  ->  move new(file|foldername) to old(file|foldername) path
+							5. create filename  ->  create file with specified name and extension
+							6. delete filename  ->  delete file with specified name if exist
+							7. show  ->  show created files or folders with File Manager
+							8. dir  ->  show all files or folder in current location
+							9. cd/  ->  return to C:>
+							10. cd ..  ->  return one previous folder in subfolder
+							11. foldername  ->  go to folder if exist in current location
+							12. change  ->  return to home
+							13. exit  -> close program		
+		
+		)"
+	};
+
+	for (int i = 0; i < rows / 2 - 9; i++) cout << "\n";
+	cout << help;
+	for (int i = 0; i < columns / 2 - 10; i++) cout << " ";
+	system("pause");
+	system("cls");
 }
 
 void delay(float seconds) {

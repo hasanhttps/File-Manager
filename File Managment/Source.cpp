@@ -28,8 +28,8 @@ int main() {
 	
 	// GUI
 
-	bool choose = 0;
-	int set[2] = { col, defC };
+	int choose = 0;
+	int set[3] = { col, defC, defC };
 	while (true) {
 		getCurrentSizeT();// Get Current Size of Terminal wit row and column
 		gotoXy(0, 0);
@@ -40,12 +40,18 @@ int main() {
 			color(defC);
 			menu(set, columns / 2 - 8, rows / 2 - 1);
 			gotoXy(columns / 2 - 8, rows / 2 - 1 + choose);
-		}if (_kbhit()) {
+		}
+
+		if (_kbhit()) {
 			int ascii = _getch();
-			set[0] = defC;
-			set[1] = defC;
-			if (ascii == 72 || ascii == 119 || ascii == 89 ||
-				ascii == 80 || ascii == 115 || ascii == 83) choose = !choose;
+			set[choose] = defC;
+			if (ascii == 72 || ascii == 119 || ascii == 89) {
+				if (choose) choose--;
+				else choose = 2;
+			}else if (ascii == 80 || ascii == 115 || ascii == 83) {
+				if (choose < 2) choose++;
+				else choose = 0;
+			}
 			if (ascii == '\r') {
 				system("color 7");
 				system("cls");
@@ -56,13 +62,13 @@ int main() {
 				}
 				else if (choose == 1) {
 					interFace(file);
-
+				}else if (choose == 2) {
+					help();
 				}
-			}
-			if (choose == 0) set[0] = col;
-			else if (choose == 1) set[1] = col;
-			menu(set, columns / 2 - 8, rows / 2 - 1);
-			gotoXy(columns / 2 - 8, rows / 2 - 1 + choose);
+			}	
+		set[choose] = col;
+		menu(set, columns / 2 - 8, rows / 2 - 1);
+		gotoXy(columns / 2 - 8, rows / 2 - 1 + choose);
 		}
 	}
 }
